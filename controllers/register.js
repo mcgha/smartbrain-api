@@ -2,7 +2,7 @@ const handleRegister = (req, res, db, bcrypt) => {
     if (!email || !name || !password) {
         return res.status(400).json('Incorrect form submission');
     } //if we return, function exits, rest of code wont run
-    const { email, name, password } = req.body;
+    const { name, email, password } = req.body;
     const hash = bcrypt.hashSync(password);
     db.transaction(trx => { //when you do have more than 1 action
         trx.insert({
