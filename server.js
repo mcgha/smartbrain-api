@@ -1,4 +1,3 @@
-// const { response } = require('express');
 const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
@@ -13,7 +12,9 @@ const db = knex({
     client: 'pg', //postgresql
     connection: {
       connectionString : process.env.DATABASE_URL,
-      ssl: true
+      ssl: {
+        rejectUnauthorized: false
+      }
       // user : 'postgres',
       // password : '',
       // database : 'smartbrain' //dev mode
