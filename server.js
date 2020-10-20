@@ -25,12 +25,12 @@ app.use(express.json()); //have to otherwise cannot read user frontend input
 app.use(cors());
 
 app.get('/', (req,res)=> {
-    res.send('Welcome to server.js. App is running on port 3001');
+    res.send(db.users);
 })
 
-app.post('/signin', (req, res) => { signin.handleSignin(req, res, db, bcrypt)})
-app.post('/register', (req, res) => {register.handleRegister(req, res, db, bcrypt)}) //dependency injector
-app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)})
+app.post('/signin', (req, res) => { signin.handleSignin(req, res, db, bcrypt) })
+app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) }) //dependency injector
+app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db) })
 app.put('/image', (req, res) => { image.handleImage(req, res, db) })
 app.put('/imageurl', (req, res) => { image.handleApiCall(req, res) })
 
